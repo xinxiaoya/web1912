@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script>
+			function getList(){
+				var xhr=new XMLHttpRequest();
+				console.log("1----"+xhr);
+				xhr.onreadystatechange=function(){
+					console.log("2----"+xhr.readyState);
+					if(xhr.readyState==4 && xhr.status==200){
+						var r=xhr.responseText;
+						console.log("3----"+r);
+						d1.innerHTML=r;
+					}
+				}
+				xhr.open("get","/user",true);
+				xhr.send();
+			}
+		</script>
+	</head>
+	<body onload="getList()">
+		<p id="d1"></p>
+	</body>
+</html>

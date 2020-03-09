@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script>
+			function login(){
+				var $uname=uname.value;
+				var $upwd=upwd.value;
+				console.log($uname,$upwd);
+				var xhr=new XMLHttpRequest();
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4 && xhr.status==200){
+						var result=xhr.responseText;
+						dd.innerHTML=result;
+					}
+				}
+				xhr.open("get","/login/"+$uname+"&"+$upwd,true);
+				xhr.send();
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" id="uname">
+		<input type="text" id="upwd">
+		<button onclick="login()">登录</button>
+		<div id="dd"></div>
+	</body>
+</html>
